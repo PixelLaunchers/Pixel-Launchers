@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelLaunchers - Modern Web Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        #hero-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+        .gradient-text { background: linear-gradient(45deg, #6366f1, #3b82f6); -webkit-background-clip: text; }
+        .animate-blob { animation: blob 8s infinite; }
+        @keyframes blob { 0%, 100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; } 50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; } }
+    </style>
+</head>
+<body class="font-['Inter'] bg-gray-50">
+    <!-- Floating Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">PixelLaunchers</div>
+            <div class="space-x-8 hidden md:flex">
+                <a href="#services" class="text-gray-600 hover:text-indigo-600 transition-all">Services</a>
+                <a href="#work" class="text-gray-600 hover:text-indigo-600 transition-all">Work</a>
+                <a href="#pricing" class="text-gray-600 hover:text-indigo-600 transition-all">Pricing</a>
+                <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Three.js Background -->
+    <section class="min-h-screen flex items-center pt-20">
+        <canvas id="hero-canvas"></canvas>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h1 class="text-6xl font-bold text-gray-900 leading-tight">
+                        Transform Your 
+                        <span class="gradient-text">Digital Presence</span>
+                        With Modern Design
+                    </h1>
+                    <p class="text-xl text-gray-600">Lightning-fast websites built with cutting-edge technology and pixel-perfect precision.</p>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                            Start Project →
+                        </button>
+                        <button class="px-8 py-4 border-2 border-gray-300 rounded-xl hover:border-indigo-400 transition">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-500 blur-3xl opacity-20 animate-blob"></div>
+                    <div class="relative bg-white rounded-2xl p-8 shadow-2xl">
+                        <div class="space-y-6">
+                            <div class="h-64 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-4xl font-bold mb-2 gradient-text">$100</div>
+                                    <p class="text-gray-600">Basic Website Package</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                                    <div class="text-2xl font-bold gradient-text">24h</div>
+                                    <p class="text-sm text-gray-600">Delivery</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                                    <div class="text-2xl font-bold gradient-text">100%</div>
+                                    <p class="text-sm text-gray-600">Satisfaction</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                                    <div class="text-2xl font-bold gradient-text">5★</div>
+                                    <p class="text-sm text-gray-600">Rating</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Grid -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Lightning Performance</h3>
+                    <p class="text-gray-600">Websites optimized for speed using modern static site generation and CDN delivery.</p>
+                </div>
+                <!-- Add more feature cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Interactive Pricing Cards -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="relative group perspective-1000">
+                    <div class="relative preserve-3d group-hover:rotate-y-20 transition-transform duration-500">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                            <!-- Pricing card content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="space-y-6">
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="flex justify-between items-center w-full group">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition">How long does development take?</h3>
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center transition group-hover:bg-indigo-600 group-hover:text-white">
+                            <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="mt-4 text-gray-600">Our streamlined process typically delivers...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with p5.js Background -->
+    <section id="contact" class="relative py-20 bg-gradient-to-br from-indigo-600 to-blue-500 text-white">
+        <div id="p5-canvas" class="absolute inset-0 opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Contact form -->
+        </div>
+    </section>
+
+    <script>
+        // Three.js Background Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#hero-canvas'), alpha: true });
+        
+        // Add your Three.js animation setup here
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".feature-card", {
+            scrollTrigger: ".feature-card",
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        // p5.js Interactive Background
+        const sketch = p => {
+            p.setup = () => {
+                p.createCanvas(window.innerWidth, window.innerHeight);
+            };
+            p.draw = () => {
+                // Add interactive particles
+            };
+        };
+        new p5(sketch, 'p5-canvas');
+    </script>
+</body>
+</html>
